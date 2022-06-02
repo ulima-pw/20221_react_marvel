@@ -1,7 +1,6 @@
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import CardDeck from "../components/CardDeck.component"
+import ContenedorTabs from "../components/ContenedorTabs.component"
 import MenuLateral from "../components/MenuLateral.component"
-import TablaPeliculas from "../components/TablaPeliculas.component"
 
 const MoviesPage = () => {
     return <div className="container">
@@ -11,17 +10,11 @@ const MoviesPage = () => {
                 <MenuLateral />
             </div>
             <div className="col-9">
-                <div className="tab-content" id="v-pills-tabContent">
-                    <div className="tab-pane fade show active" id="v-pills-tabla" role="tabpanel" aria-labelledby="v-pills-tabla-tab">
-                        <TablaPeliculas />
-                    </div>
-                    <div className="tab-pane fade" id="v-pills-card" role="tabpanel" aria-labelledby="v-pills-card-tab">
-                        <CardDeck />
-                    </div>
-                </div>
+                <ContenedorTabs modo={1}/>
             </div>
         </div>
     </div>
 }
+
 
 export default MoviesPage
