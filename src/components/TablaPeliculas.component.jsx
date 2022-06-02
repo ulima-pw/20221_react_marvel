@@ -1,4 +1,4 @@
-const TablaPeliculas = () => {
+const TablaPeliculas = (props) => {
     return <table className="table">
         <thead>
             <tr>
@@ -12,28 +12,21 @@ const TablaPeliculas = () => {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Iron Man</td>
-                <td>2008-05-02</td>
-                <td>585,171,547</td>
-                <td>1</td>
-                <td>1</td>
-                <td>
-                    <a href="#">Seleccionar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>The Incredible Hulk</td>
-                <td>2008-06-13</td>
-                <td>265,573,859</td>
-                <td>1</td>
-                <td>1</td>
-                <td>
-                    <a href="#">Seleccionar</a>
-                </td>
-            </tr>
+            {
+                props.peliculas.map((pelicula)=> {
+                    return <tr key={`pelicula_${pelicula.id}`}>
+                        <td>{ pelicula.id }</td>
+                        <td>{ pelicula.nombre }</td>
+                        <td>{ pelicula.fecha }</td>
+                        <td>{ pelicula.recaudacion }</td>
+                        <td>{ pelicula.fase }</td>
+                        <td>{ pelicula.postcreditos }</td>
+                        <td>
+                            <a href="#">Seleccionar</a>
+                        </td>
+                    </tr>
+                })
+            }
         </tbody>
 
     </table>
