@@ -2,35 +2,12 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import ContenedorTabs from "../components/ContenedorTabs.component"
 import MenuLateral from "../components/MenuLateral.component"
 
+import data from "../resources/data"
+
 const MoviesPage = () => {
 
     // temporal
-    const listaPeliculas = [
-        {
-            id : 1,
-            nombre: "Iron Man",
-            fecha: "2008-05-02",
-            recaudacion: "585,171,547",
-            fase: "1",
-            postcreditos: "1",
-        },
-        {
-            id : 2,
-            nombre: "The Incredible Hulk",
-            fecha: "2008-06-13",
-            recaudacion: "265,573,859",
-            fase: "1",
-            postcreditos: "1",
-        },
-        {
-            id : 3,
-            nombre: "Pelic1",
-            fecha: "2008-06-13",
-            recaudacion: "265,573,859",
-            fase: "1",
-            postcreditos: "1",
-        }
-    ]
+    const listaPeliculas = data.data
 
     return <div className="container">
         <h1>Marvel Cinematic Universe (MCU)</h1>
@@ -39,7 +16,7 @@ const MoviesPage = () => {
                 <MenuLateral />
             </div>
             <div className="col-9">
-                <ContenedorTabs modo={1} peliculas={listaPeliculas}/>
+                <ContenedorTabs modo={2} peliculas={listaPeliculas}/>
             </div>
         </div>
     </div>

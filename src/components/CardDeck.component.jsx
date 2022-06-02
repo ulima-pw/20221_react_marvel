@@ -1,4 +1,5 @@
-const CardDeck = () => {
+const CardDeck = (props) => {
+
     return <div>Deck de PEliculas</div>
 }
 
