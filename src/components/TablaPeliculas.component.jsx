@@ -1,3 +1,5 @@
+import FilaPelicula from "./FilaPelicula.component";
+
 const TablaPeliculas = (props) => {
     return <table className="table">
         <thead>
@@ -14,17 +16,9 @@ const TablaPeliculas = (props) => {
         <tbody>
             {
                 props.peliculas.map((pelicula)=> {
-                    return <tr key={`pelicula_${pelicula.id}`}>
-                        <td>{ pelicula.id }</td>
-                        <td>{ pelicula.title }</td>
-                        <td>{ pelicula.release_date }</td>
-                        <td>{ parseInt(pelicula.box_office).toLocaleString() }</td>
-                        <td>{ pelicula.phase }</td>
-                        <td>{ pelicula.post_credit_scenes }</td>
-                        <td>
-                            <a href="#">Seleccionar</a>
-                        </td>
-                    </tr>
+                    return <FilaPelicula 
+                        key={`pelicula_${pelicula.id}`}
+                        pelicula={pelicula} /> 
                 })
             }
         </tbody>
