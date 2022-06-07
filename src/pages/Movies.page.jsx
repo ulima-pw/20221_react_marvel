@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import ContenedorTabs from "../components/ContenedorTabs.component"
 import MenuLateral from "../components/MenuLateral.component"
@@ -6,12 +6,26 @@ import MenuLateral from "../components/MenuLateral.component"
 import data from "../resources/data"
 
 const MoviesPage = () => {
-
-    // temporal
-    const listaPeliculas = data.data
-
     // Variables de estado
     const [modoVisualizacion, setModoVisualizacion] = useState(1)
+    const [listaPeliculas, setListaPeliculas] = useState([])
+
+
+    useEffect( () => {
+        const dataFetch = async () => {
+            const resp = await fetch("https://mcuapi.herokuapp.com/api/v1/movies")
+            const data = await resp.json()
+            setListaPeliculas(data.data)
+            //console.log(data)
+            return data
+        }
+        
+        dataFetch()
+    }, [])
+
+    // temporal
+    //const listaPeliculas = data.data
+
 
     return <div className="container">
         <h1>Marvel Cinematic Universe (MCU)</h1>
