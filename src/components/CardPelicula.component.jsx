@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const CardPelicula = (props) => {
     return <div className="card">
         <img src={ props.pelicula.cover_url } 
@@ -15,7 +17,11 @@ const CardPelicula = (props) => {
                 <div className="col-4">Saga:</div>
                 <div className="col-4">{ props.pelicula.saga }</div>
             </div>
-            <button className="btn btn-primary mt-3">Seleccionar</button>
+            <Link className="btn btn-primary mt-3" 
+                to={`/movies/detail/${props.pelicula.id}`}>
+                Seleccionar
+            </Link>
+            
         </div>
     </div>
 }

@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
 import MoviesPage from './pages/Movies.page';
+import DetailMoviePage from './pages/DetailMovie.page'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MoviesPage />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/movies' element={<MoviesPage />}/>
+        <Route path='/movies/detail/:movieid' element={<DetailMoviePage/>}/>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

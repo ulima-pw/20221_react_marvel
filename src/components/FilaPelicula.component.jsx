@@ -2,6 +2,15 @@ import { useState } from "react"
 
 const FilaPelicula = (props) => {
     const [tipoVisualizacion, setTipoVisualizacion] = useState("lectura")
+    const [peliculaTitulo, setPeliculaTitulo] = useState(props.pelicula.title)
+    const [peliculaFechaEstreno, setPeliculaFechaEstreno] = useState(props.pelicula.release_date)
+    const [peliculaRecaudacion, setPeliculaRecaudacion] = useState(props.pelicula.box_office)
+    const [peliculaFase, setPeliculaFase] = useState(props.pelicula.phase)
+    const [peliculaEscenasPostcredito, setPeliculaEscenasPostCredito] = useState(props.pelicula.post_credit_scenes)
+
+    const onPeliculaTituloChange = (evt) => {
+        setPeliculaTitulo(evt.target.value)
+    }
 
     const cambiarTipoFila = () => {
         if (tipoVisualizacion === "lectura") {
@@ -26,27 +35,27 @@ const FilaPelicula = (props) => {
         </tr>
     }else {
         return <tr>
+            <td>{ props.pelicula.id }</td>
             <td>
-                <input type={"text"} defaultValue={ props.pelicula.id } />
+                <input type={"text"} value={ peliculaTitulo } 
+                    onChange={ onPeliculaTituloChange } />
             </td>
             <td>
-                <input type={"text"} defaultValue={ props.pelicula.title } />
-            </td>
-            <td>
-                <input type={"text"} defaultValue={ props.pelicula.release_date } />
+                <input type={"text"} value={ peliculaFechaEstreno } />
             </td>
             <td>
                 <input type={"text"} 
-                    defaultValue={ parseInt(props.pelicula.box_office).toLocaleString() } />
+                    value={ parseInt(peliculaRecaudacion).toLocaleString() } />
             </td>
             <td>
-                <input type={"text"} defaultValue={ props.pelicula.phase } />
+                <input type={"text"} value={ peliculaFase } />
             </td>
             <td>
-                <input type={"text"} defaultValue={ props.pelicula.post_credit_scenes } />
+                <input type={"text"} value={ peliculaEscenasPostcredito } />
             </td>
             <td>
-                <a href="#" onClick={cambiarTipoFila}>Seleccionar</a>
+                <a className="btn btn-primary btn-sm" href="#" onClick={cambiarTipoFila}>Guardar</a>
+                <a className="btn btn-primary btn-sm" href="#" onClick={cambiarTipoFila}>Cancelar</a>
             </td>
         </tr>
     }
