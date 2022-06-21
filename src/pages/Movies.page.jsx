@@ -13,7 +13,7 @@ const MoviesPage = () => {
 
     useEffect( () => {
         const dataFetch = async () => {
-            const resp = await fetch("https://mcuapi.herokuapp.com/api/v1/movies")
+            const resp = await fetch("http://localhost:5000/movies")
             const data = await resp.json()
             setListaPeliculas(data.data)
             //console.log(data)

@@ -12,6 +12,36 @@ const FilaPelicula = (props) => {
         setPeliculaTitulo(evt.target.value)
     }
 
+    const onPeliculaFechaLanzamientoChange = (evt) => {
+        setPeliculaFechaEstreno(evt.target.value)
+    }
+
+    const onPeliculaRecaudacionChange = (evt) => {
+        setPeliculaRecaudacion(evt.target.value)
+    }
+
+    const onPeliculaFaseChange = (evt) => {
+        setPeliculaFase(evt.target.value)
+    }
+
+    const onPeliculaEscenasPostcreditoChange = (evt) => {
+        setPeliculaEscenasPostCredito(evt.target.value)
+    }
+
+    const guardarPeliculaOnClick = () => {
+        const pelicula = {
+            id : props.pelicula.id,
+            titulo : peliculaTitulo,
+            fechaEstreno : peliculaFechaEstreno,
+            recaudacion : peliculaRecaudacion,
+            fase : peliculaFase,
+            escenasPostcredito : peliculaEscenasPostcredito
+        }
+
+        // fetch() // POST
+        console.log("Se debio guardar la pelicula: ",  pelicula)
+    }
+
     const cambiarTipoFila = () => {
         if (tipoVisualizacion === "lectura") {
             setTipoVisualizacion("escritura")
@@ -41,21 +71,27 @@ const FilaPelicula = (props) => {
                     onChange={ onPeliculaTituloChange } />
             </td>
             <td>
-                <input type={"text"} value={ peliculaFechaEstreno } />
+                <input type={"text"} value={ peliculaFechaEstreno } 
+                    onChange={ onPeliculaFechaLanzamientoChange }/>
             </td>
             <td>
                 <input type={"text"} 
-                    value={ parseInt(peliculaRecaudacion).toLocaleString() } />
+                    value={ parseInt(peliculaRecaudacion).toLocaleString() } 
+                    onChange={ onPeliculaRecaudacionChange }/>
             </td>
             <td>
-                <input type={"text"} value={ peliculaFase } />
+                <input type={"text"} value={ peliculaFase } 
+                    onChange={ onPeliculaFaseChange }/>
             </td>
             <td>
-                <input type={"text"} value={ peliculaEscenasPostcredito } />
+                <input type={"text"} value={ peliculaEscenasPostcredito } 
+                    onChange={ onPeliculaEscenasPostcreditoChange }/>
             </td>
             <td>
-                <a className="btn btn-primary btn-sm" href="#" onClick={cambiarTipoFila}>Guardar</a>
-                <a className="btn btn-primary btn-sm" href="#" onClick={cambiarTipoFila}>Cancelar</a>
+                <button className="btn btn-primary btn-sm" type="button" 
+                    onClick={ guardarPeliculaOnClick }>Guardar</button>
+                <button className="btn btn-primary btn-sm" type="button" 
+                    onClick={cambiarTipoFila}>Cancelar</button>
             </td>
         </tr>
     }
